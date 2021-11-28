@@ -38,7 +38,7 @@ async def echo_message(msg: types.Message):
 	temp = list(msg.text)
 	for n in range(0, len(eng)):
 		if(temp[0]==eng[n]):
-		    await msg.reply("Відбувається переклад з древньої мови сітхів на рідну соловїну, зачекайте, будь ласка")
+		    
 			result = str()
 			for i in range(0, len(temp)):
 			     	   	for k in range(0, len(eng)):
