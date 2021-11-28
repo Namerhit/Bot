@@ -4,6 +4,7 @@ from aiogram.types import ReplyKeyboardRemove, \
     ReplyKeyboardMarkup, KeyboardButton, \
     InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram.dispatcher import Dispatcher
+from aiogram.dispatcher.filters import Text
 from aiogram.utils import executor 
 from config import TOKEN 
 bot = Bot(token=TOKEN)
@@ -15,9 +16,19 @@ keyboard.add(*buttons)
 
 eng = ["q", "Q", "w", "W", "e", "E", "r", "R", "t", "T", "y", "Y", "u", "U", "i", "I", "o", "O", "p", "P", "[", "{", "]", "}", "a", "A", "s", "S", "d", "D", "f", "F", "g", "G", "h", "H", "j", "J", "k", "K", "l", "L", ";", ":", "'", '"', "z", "Z", "x", "X", "c", "C", "v", "V", "b", "B", "n", "N", "m", "M", ",", "<", ".", ">", "/", "?", " ", "1", "!", "2", "@", "3", "#", "4", "$", "5", "%", "6", "^", "7", "&", "8", "*", "9", "(", "0", ")", "-", "_", "=", "+"]
 ukr = ["й", "Й", "ц", "Ц", "у", "У", "к", "К", "е", "Е", "н", "Н", "г", "Г", "ш", "Ш", "щ", "Щ", "з", "З", "х", "Х", "ї", "Ї", "ф", "Ф", "і", "І", "в", "В", "а", "А", "п", "П", "р", "Р", "о", "О", "л", "Л", "д", "Д", "ж", "Ж", "є", 'Є', "я", "Я", "ч", "Ч", "с", "С", "м", "М", "и", "И", "т", "Т", "ь", "Ь", "б", "Б", "ю", "Ю", ".", ",", " ", "1", "!", "2", '"', "3", "№", "4", ";", "5", "%", "6", ":", "7", "?", "8", "*", "9", "(", "0", ")", "-", "_", "=", "+"]
+@dp.message_handler(Text(equals="Ага"))
+async def with_puree(message: types.Message):
+    chat_id = msg.chat.id
+    await bot.send_photo(chat_id, photo=open('love.png', 'rb'), reply_markup=types.ReplyKeyboardRemove())
+
+
+@dp.message_handler(lambda message: message.text == "Нєа")
+async def without_puree(message: types.Message):
+    chat_id = msg.chat_id
+    await bot.send_photo(chat_id, photo=open('fuck.png', 'rb'), reply_markup=types.ReplyKeyboardRemove())
 @dp.message_handler(commands=['start'])
 async def process_start_command(message: types.Message):
-	await message.reply("Переводчик для сектантов")
+	await message.reply("Поки вас не попросять, кнопки не натискати")
 @dp.message_handler(commands=['greeting'])
 async def process_start_command(message: types.Message):
 	await message.reply("https://youtu.be/dQw4w9WgXcQ")
