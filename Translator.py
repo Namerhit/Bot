@@ -8,8 +8,9 @@ from aiogram.utils import executor
 from config import TOKEN 
 bot = Bot(token=TOKEN)
 dp =Dispatcher(bot) 
-
-
+keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
+buttons = ["Ага", "Нєа"]
+keyboard.add(*buttons)
 
 
 eng = ["q", "Q", "w", "W", "e", "E", "r", "R", "t", "T", "y", "Y", "u", "U", "i", "I", "o", "O", "p", "P", "[", "{", "]", "}", "a", "A", "s", "S", "d", "D", "f", "F", "g", "G", "h", "H", "j", "J", "k", "K", "l", "L", ";", ":", "'", '"', "z", "Z", "x", "X", "c", "C", "v", "V", "b", "B", "n", "N", "m", "M", ",", "<", ".", ">", "/", "?", " ", "1", "!", "2", "@", "3", "#", "4", "$", "5", "%", "6", "^", "7", "&", "8", "*", "9", "(", "0", ")", "-", "_", "=", "+"]
@@ -30,11 +31,6 @@ async def echo_message(msg: types.Message):
 			     	   	for k in range(0, len(eng)):
 			     	   		if(temp[i]==eng[k]):
 			     	   			result = result + ukr[k]
-	keyboard = types.ReplyKeyboardMarkup()
-    button_1 = types.KeyboardButton(text="Ага")
-    keyboard.add(button_1)
-    button_2 = "Нєа"
-    keyboard.add(button_2)
 	await msg.reply("Відбувається переклад з древньої мови сітхів на рідну соловїну, зачекайте, будь ласка")
 	await msg.reply(result)
 	chat_id = msg.chat.id
