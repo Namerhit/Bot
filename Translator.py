@@ -23,8 +23,8 @@ async def with_puree(message: types.Message):
 
 
 @dp.message_handler(Text(equals="Нєа"))
-async def with_puree(message: types.Message):
-    chat_id = message.chat_id
+async def with_puree(msgg: types.Message):
+    chat_id = msgg.chat_id
     await bot.send_photo(chat_id, photo=open('fuck.png', 'rb'), reply_markup=types.ReplyKeyboardRemove())
 @dp.message_handler(commands=['start'])
 async def process_start_command(message: types.Message):
