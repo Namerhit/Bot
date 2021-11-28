@@ -10,10 +10,7 @@ bot = Bot(token=TOKEN)
 dp =Dispatcher(bot) 
 
 
-button_hi = KeyboardButton('Привет! ')
 
-greet_kb = ReplyKeyboardMarkup()
-greet_kb.add(button_hi)
 
 eng = ["q", "Q", "w", "W", "e", "E", "r", "R", "t", "T", "y", "Y", "u", "U", "i", "I", "o", "O", "p", "P", "[", "{", "]", "}", "a", "A", "s", "S", "d", "D", "f", "F", "g", "G", "h", "H", "j", "J", "k", "K", "l", "L", ";", ":", "'", '"', "z", "Z", "x", "X", "c", "C", "v", "V", "b", "B", "n", "N", "m", "M", ",", "<", ".", ">", "/", "?", " ", "1", "!", "2", "@", "3", "#", "4", "$", "5", "%", "6", "^", "7", "&", "8", "*", "9", "(", "0", ")", "-", "_", "=", "+"]
 ukr = ["й", "Й", "ц", "Ц", "у", "У", "к", "К", "е", "Е", "н", "Н", "г", "Г", "ш", "Ш", "щ", "Щ", "з", "З", "х", "Х", "ї", "Ї", "ф", "Ф", "і", "І", "в", "В", "а", "А", "п", "П", "р", "Р", "о", "О", "л", "Л", "д", "Д", "ж", "Ж", "є", 'Є', "я", "Я", "ч", "Ч", "с", "С", "м", "М", "и", "И", "т", "Т", "ь", "Ь", "б", "Б", "ю", "Ю", ".", ",", " ", "1", "!", "2", '"', "3", "№", "4", ";", "5", "%", "6", ":", "7", "?", "8", "*", "9", "(", "0", ")", "-", "_", "=", "+"]
@@ -33,12 +30,18 @@ async def echo_message(msg: types.Message):
 			     	   	for k in range(0, len(eng)):
 			     	   		if(temp[i]==eng[k]):
 			     	   			result = result + ukr[k]
+	keyboard = types.ReplyKeyboardMarkup()
+    button_1 = types.KeyboardButton(text="Ага")
+    keyboard.add(button_1)
+    button_2 = "Нєа"
+    keyboard.add(button_2)
 	await msg.reply("Відбувається переклад з древньої мови сітхів на рідну соловїну, зачекайте, будь ласка")
-	await msg.reply(result, reply_markup=kb.greet_kb)
+	await msg.reply(result)
 	chat_id = msg.chat.id
 	
 
 	await bot.send_photo(chat_id, photo=open('Duck.png', 'rb'))
+	await msg.reply("Чи задовольняє вас переклад?", reply_markup=keyboard)
 
 
 if __name__ == '__main__':
