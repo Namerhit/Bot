@@ -37,7 +37,7 @@ async def process_start_command(message: types.Message):
 async def echo_message(msg: types.Message):
 	temp = list(msg.text)
 	for n in range(0, len(eng)):
-		if(temp[0]==eng[n] and temp[0] != eng[33] and temp[1] != eng[8] and temp[2] != eng[8] and temp[3] != eng[18] and temp[4] != eng[26]):
+		if(temp[0]==eng[n]):
 		    
 			result = str()
 			for i in range(0, len(temp)):
