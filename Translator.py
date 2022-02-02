@@ -14,7 +14,7 @@ keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
 buttons = ["Ага", "Нєа"]
 keyboard.add(*buttons)
 keyboardYesNo = types.ReplyKeyboardMarkup(resize_keyboard=True)
-buttonsYesNo = ["☀️", "☁️"]
+buttonsYesNo = ["Жадаю", "Нє"]
 keyboardYesNo.add(*buttonsYesNo)
 
 
@@ -25,7 +25,7 @@ async def with_puree(message: types.Message):
     chat_id = message.chat.id
     await bot.send_photo(chat_id, photo=open('love.png', 'rb'), reply_markup=types.ReplyKeyboardRemove())
 
-@dp.message_handler(Text(equals="☁️"))
+@dp.message_handler(Text(equals="Нє"))
 async def with_puree(message: types.Message):
     await message.reply("Ладна")
 
@@ -46,7 +46,7 @@ async def process_start_command(message: types.Message):
 	await message.reply("https://youtu.be/dQw4w9WgXcQ")
 @dp.message_handler()
 async def echo_message(msg: types.Message):
-	await msg.reply("Якщо ви жадаєте перекладу, будь ласка, натисніть на сонечко. Інакше, натисніть на хмаринку.", reply_markup=keyboardYesNo)
+	await msg.reply("Переклад?", reply_markup=keyboardYesNo)
 	chat_id = msg.chat.id
 	temp = list(msg.text)
 	for n in range(0, len(eng)):
@@ -59,7 +59,7 @@ async def echo_message(msg: types.Message):
 								result = result + ukr[k]
 	
 
-@dp.message_handler(Text(equals="☀️"))
+@dp.message_handler(Text(equals="Жадаю"))
 async def with_puree(msg: types.Message):
 	await msg.reply("Відбувається переклад з древньої мови сітхів на рідну соловїну, зачекайте, будь ласка")
 	await msg.reply(result)
