@@ -29,27 +29,7 @@ async def with_puree(message: types.Message):
     await message.reply("Ладна")
 
 
-@dp.message_handler(Text(equals="☀️"))
-async def with_puree(message: types.Message):
-	chat_id = message.chat.id
-	temp = list(msg.text)
-	for n in range(0, len(eng)):
-		if(temp[0]==eng[n]):
-		    
-			result = str()
-			for i in range(0, len(temp)):
-						for k in range(0, len(eng)):
-							if(temp[i]==eng[k]):
-								result = result + ukr[k]
-	for b in range(0, len(eng)):
-		if(temp[0]==eng[b]):
-			await msg.reply("Відбувається переклад з древньої мови сітхів на рідну соловїну, зачекайте, будь ласка")
-	await msg.reply(result)
-	chat_id = msg.chat.id
-	
 
-	await bot.send_photo(chat_id, photo=open('Duck.png', 'rb'))
-	await msg.reply("Чи задовольняє вас переклад?", reply_markup=keyboard)
 	
 
 @dp.message_handler(Text(equals="Нєа"))
@@ -66,6 +46,28 @@ async def process_start_command(message: types.Message):
 @dp.message_handler()
 async def echo_message(msg: types.Message):
 	await msg.reply("Якщо ви жадаєте перекладу, будь ласка, натисніть на сонечко. Інакше, натисніть на хмаринку.", reply_markup=keyboardYesNo)
+
+	@dp.message_handler(Text(equals="☀️"))
+	async def with_puree(message: types.Message):
+		chat_id = message.chat.id
+		temp = list(msg.text)
+		for n in range(0, len(eng)):
+			if(temp[0]==eng[n]):
+		    
+				result = str()
+				for i in range(0, len(temp)):
+							for k in range(0, len(eng)):
+								if(temp[i]==eng[k]):
+									result = result + ukr[k]
+		for b in range(0, len(eng)):
+			if(temp[0]==eng[b]):
+				await msg.reply("Відбувається переклад з древньої мови сітхів на рідну соловїну, зачекайте, будь ласка")
+		await msg.reply(result)
+		chat_id = msg.chat.id
+	
+	chat_id = msg.chat.id
+	await bot.send_photo(chat_id, photo=open('Duck.png', 'rb'))
+	await msg.reply("Чи задовольняє вас переклад?", reply_markup=keyboard)
 	
 
 
