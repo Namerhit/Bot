@@ -46,7 +46,7 @@ async def process_start_command(message: types.Message):
 	await message.reply("https://youtu.be/dQw4w9WgXcQ")
 @dp.message_handler()
 async def echo_message(msg: types.Message):
-	await msg.reply("Переклад?", reply_markup=keyboardYesNo)
+	
 	chat_id = msg.chat.id
 	temp = list(msg.text)
 	for n in range(0, len(eng)):
@@ -57,17 +57,18 @@ async def echo_message(msg: types.Message):
 						for k in range(0, len(eng)):
 							if(temp[i]==eng[k]):
 								result = result + ukr[k]
+	await msg.reply("Переклад?", reply_markup=keyboardYesNo)
 	
 
 @dp.message_handler(Text(equals="Жадаю"))
-async def with_puree(msg: types.Message):
-	await msg.reply("Відбувається переклад з древньої мови сітхів на рідну соловїну, зачекайте, будь ласка")
-	await msg.reply(result)
-	chat_id = msg.chat.id
+async def with_puree(msgg: types.Message):
+	await msgg.reply("Відбувається переклад з древньої мови сітхів на рідну соловїну, зачекайте, будь ласка")
+	await msgg.reply(result)
+	chat_id = msgg.chat.id
 	
-	chat_id = msg.chat.id
+	chat_id = msgg.chat.id
 	await bot.send_photo(chat_id, photo=open('Duck.png', 'rb'))
-	await msg.reply("Чи задовольняє вас переклад?", reply_markup=keyboard)
+	await msgg.reply("Чи задовольняє вас переклад?", reply_markup=keyboard)
 		
 	
 
