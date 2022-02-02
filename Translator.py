@@ -24,7 +24,7 @@ async def with_puree(message: types.Message):
     chat_id = message.chat.id
     await bot.send_photo(chat_id, photo=open('love.png', 'rb'), reply_markup=types.ReplyKeyboardRemove())
 
-@dp.message_handler(Text(equals="☀️))
+@dp.message_handler(Text(equals="☀️"))
 async def with_puree(message: types.Message):
     chat_id = message.chat.id
     temp = list(msg.text)
