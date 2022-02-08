@@ -65,6 +65,7 @@ async def with_puree(msgg: types.Message):
 	await msgg.reply("Відбувається переклад з древньої мови сітхів на рідну соловїну, зачекайте, будь ласка")
 	await msgg.reply(result)
 	chat_id = msgg.chat.id
+	chat_id = msgg.chat.id
 	
 	chat_id = msgg.chat.id
 	await bot.send_photo(chat_id, photo=open('Duck.png', 'rb'))
